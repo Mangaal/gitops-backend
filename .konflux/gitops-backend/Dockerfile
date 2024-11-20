@@ -1,3 +1,4 @@
+# Build Stage
 FROM openshift/golang-builder:rhel_8_golang_1.21 AS builder
 WORKDIR /go/src
 COPY . /go/src
@@ -5,12 +6,12 @@ RUN GIT_COMMIT=$(git rev-parse HEAD) && \
   CGO_ENABLED=0 GOOS=linux go build -a -mod=readonly \
   -ldflags "-X github.com/redhat-developer/gitops-backend/pkg/health.GitRevision=${GIT_COMMIT}" ./cmd/backend-http
 
+# Final Stage
 FROM registry.access.redhat.com/ubi8/ubi-minimal
 WORKDIR /
-COPY --from=build /go/src/backend-http .
+COPY --from=builder /go/src/backend-http .
 EXPOSE 8080
 ENTRYPOINT ["./backend-http"]
-
 
 LABEL \
     name="openshift-gitops-1/gitops-rhel8" \
@@ -28,4 +29,3 @@ LABEL \
     io.k8s.display-name="Red Hat OpenShift GitOps Backend Service" \
     maintainer="William Tam <wtam@redhat.com>" \
     description="Red Hat OpenShift GitOps Backend Service"
-
