@@ -10,7 +10,7 @@ require (
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/openshift/api v3.9.0+incompatible
 	github.com/prometheus/client_golang v1.17.0
-	github.com/sirupsen/logrus v1.7.0
+	github.com/sirupsen/logrus v1.9.0
 	github.com/spf13/cobra v1.1.1
 	github.com/spf13/viper v1.7.0
 	go.uber.org/zap v1.15.0
@@ -49,7 +49,7 @@ require (
 	github.com/go-errors/errors v1.0.1 // indirect
 	github.com/go-git/gcfg v1.5.0 // indirect
 	github.com/go-git/go-billy/v5 v5.0.0 // indirect
-	github.com/go-logr/logr v0.4.0 // indirect
+	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-openapi/jsonpointer v0.19.3 // indirect
 	github.com/go-openapi/jsonreference v0.19.3 // indirect
 	github.com/go-openapi/spec v0.19.8 // indirect
